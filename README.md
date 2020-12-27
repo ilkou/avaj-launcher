@@ -18,7 +18,9 @@ $ java io.github.ilkou.simulator.Simulator scenario.txt
 
 `
 $ docker pull williamyeh/java7
+`
 
+`
 $ docker run -it --rm -v ~/Desktop/avaj-launcher:/avaj-launcher williamyeh/java7 bash
 `
 
