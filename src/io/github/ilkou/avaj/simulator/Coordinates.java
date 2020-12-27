@@ -1,3 +1,5 @@
+package io.github.ilkou.avaj.simulator;
+
 class Coordinates {
 	private int longitude;
 	private int latitude;

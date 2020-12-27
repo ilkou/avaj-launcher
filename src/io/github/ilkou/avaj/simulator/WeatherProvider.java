@@ -1,3 +1,5 @@
+package io.github.ilkou.avaj.simulator;
+
 class WeatherProvider {
 	private static WeatherProvider weatherProvider = new WeatherProvider();
 	private static String []weather = {"RAIN", "FOG", "SUN", "SNOW"};

@@ -1,5 +1,7 @@
+package io.github.ilkou.avaj.simulator;
+
 class AircraftFactory {
-	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
+	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws Simulator.ScenarioFileException {
 		Coordinates coordinates = new Coordinates(longitude, latitude, height);
 
 		if (type.equals("Helicopter"))
@@ -8,8 +10,7 @@ class AircraftFactory {
 			return (new JetPlane(name, coordinates));
 		else if (type.equals("Baloon"))
 			return (new Baloon(name, coordinates));
-		return (null);
-		/*else
-			throw new WrongAircraftTypeException();*/
+		else
+			throw new Simulator.ScenarioFileException("Wrong aircraft format: " + type);
 	}
 }

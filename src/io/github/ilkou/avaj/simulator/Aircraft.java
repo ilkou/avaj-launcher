@@ -1,3 +1,5 @@
+package io.github.ilkou.avaj.simulator;
+
 class Aircraft {
 	protected long id;
 	protected String name;

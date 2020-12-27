@@ -1,10 +1,13 @@
+package io.github.ilkou.avaj.simulator;
+
 import java.util.HashMap;
 
-class JetPlane extends Aircraft implements Flyable {
+class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 	private HashMap<String, String> funnyMessages;
 
-	JetPlane(String name, Coordinates coordinates) {
+
+	Baloon(String name, Coordinates coordinates) {
 		super(name, coordinates);
 		funnyMessages = new HashMap<String, String>();
 		funnyMessages.put("RAIN", "It's raining de-de-de-de");
@@ -16,25 +19,30 @@ class JetPlane extends Aircraft implements Flyable {
 		String weather = weatherTower.getWeather(this.coordinates);
 		if (weather.equals("RAIN"))
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
-					this.coordinates.getLatitude() + 5,
-					this.coordinates.getHeight());
+					this.coordinates.getLatitude(),
+					this.coordinates.getHeight() - 5);
 		else if (weather.equals("FOG"))
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
-					this.coordinates.getLatitude() + 1,
-					this.coordinates.getHeight());
+					this.coordinates.getLatitude(),
+					this.coordinates.getHeight() - 3);
 		else if (weather.equals("SUN"))
-			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
-					this.coordinates.getLatitude() + 10,
-					this.coordinates.getHeight() + 2);
+			this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2,
+					this.coordinates.getLatitude(),
+					this.coordinates.getHeight() + 4);
 		else if (weather.equals("SNOW")) //just delete me already
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude(),
-					this.coordinates.getHeight() - 7);
-		System.out.println("JetPlane#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".");
+					this.coordinates.getHeight() - 15);
+		System.out.println("Baloon#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".");
+		if (this.coordinates.getHeight() == 0) {
+			this.weatherTower.register(this);
+			System.out.println("Baloon#" + this.name + "(" + this.id + ") landing.");
+			System.out.println("Tower says: Baloon#" + this.name + "(" + this.id + ") unregistered from weather tower.");
+		}
 	}
 	public void registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
-		System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ") registered to weather tower.");
+		System.out.println("Tower says: Baloon#" + this.name + "(" + this.id + ") registered to weather tower.");
 	}
 }

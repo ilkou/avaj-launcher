@@ -1,3 +1,5 @@
+package io.github.ilkou.avaj.simulator;
+
 import java.util.HashMap;
 
 class Helicopter extends Aircraft implements Flyable {
@@ -31,6 +33,11 @@ class Helicopter extends Aircraft implements Flyable {
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 12);
 		System.out.println("Helicopter#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".");
+		if (this.coordinates.getHeight() == 0) {
+			this.weatherTower.register(this);
+			System.out.println("Helicopter#" + this.name + "(" + this.id + ") landing.");
+			System.out.println("Tower says: Helicopter#" + this.name + "(" + this.id + ") unregistered from weather tower.");
+		}
 	}
 	public void registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
