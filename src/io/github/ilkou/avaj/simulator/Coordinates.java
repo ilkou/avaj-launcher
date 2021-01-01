@@ -1,17 +1,14 @@
 package io.github.ilkou.avaj.simulator;
 
-class Coordinates {
+public class Coordinates {
 	private int longitude;
 	private int latitude;
 	private int height;
 
 	Coordinates(int longitude, int latitude, int height) {
-		longitude = longitude < 0 ? 0 : longitude;
-		latitude = latitude < 0 ? 0 : latitude;
-		height = height < 0 ? 0 : (height > 100 ? 100 : height);
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.height = height;
+		this.longitude = Math.max(longitude, 0);
+		this.latitude = Math.max(latitude, 0);
+		this.height = height < 0 ? 0 : (Math.min(height, 100));
 	}
 
 	public int getLongitude() {

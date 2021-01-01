@@ -1,6 +1,8 @@
 package io.github.ilkou.avaj.simulator;
 
+import java.io.IOException;
+
 interface Flyable {
-	public void updateConditions();
-	public void registerTower(WeatherTower weatherTower);
+	void updateConditions() throws IOException;
+	void registerTower(WeatherTower weatherTower) throws IOException;
 }

@@ -1,5 +1,6 @@
 package io.github.ilkou.avaj.simulator;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 class Baloon extends Aircraft implements Flyable {
@@ -15,7 +16,7 @@ class Baloon extends Aircraft implements Flyable {
 		funnyMessages.put("SUN", "Nice day for fishing ain't it ~Rowan");
 		funnyMessages.put("SNOW", "Be like snow: beautiful but so f*cking cold");
 	}
-	public void updateConditions() {
+	public void updateConditions() throws IOException {
 		String weather = weatherTower.getWeather(this.coordinates);
 		if (weather.equals("RAIN"))
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
@@ -29,20 +30,18 @@ class Baloon extends Aircraft implements Flyable {
 			this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2,
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() + 4);
-		else if (weather.equals("SNOW")) //just delete me already
+		else if (weather.equals("SNOW"))
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 15);
-		System.out.println("Baloon#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".");
+		Simulator.file.write("Baloon#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".\n");
 		if (this.coordinates.getHeight() == 0) {
-			this.weatherTower.register(this);
-			System.out.println("Baloon#" + this.name + "(" + this.id + ") landing.");
-			System.out.println("Tower says: Baloon#" + this.name + "(" + this.id + ") unregistered from weather tower.");
+			Simulator.file.write("Baloon#" + this.name + "(" + this.id + ") landing.\n");
+			this.weatherTower.unregister(this);
 		}
 	}
-	public void registerTower(WeatherTower weatherTower) {
+	public void registerTower(WeatherTower weatherTower) throws IOException {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
-		System.out.println("Tower says: Baloon#" + this.name + "(" + this.id + ") registered to weather tower.");
 	}
 }

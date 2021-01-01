@@ -1,10 +1,12 @@
 package io.github.ilkou.avaj.simulator;
 
-class WeatherTower extends Tower {
+import java.io.IOException;
+
+public class WeatherTower extends Tower {
 	public String getWeather(Coordinates coordinates) {
 		return (WeatherProvider.getProvider().getCurrentWeather(coordinates));
 	}
-	void changeWeather() {
+	void changeWeather() throws IOException {
 		this.conditionsChanged();
 	}
 }
