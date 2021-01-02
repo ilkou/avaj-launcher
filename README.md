@@ -15,7 +15,7 @@ $ javac -sourcepath . @sources.txt
 ## TO RUN
 
 `
-$ java -classpath src io.github.ilkou.simulator.Simulator scenario.txt
+$ java -classpath src io.github.ilkou.avaj.simulator.Simulator scenario.txt
 `
 
 ## Docker (Java 7)
