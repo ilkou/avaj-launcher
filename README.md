@@ -9,7 +9,7 @@ $ find * -name "*.java" > sources.txt
 `
 
 `
-$ javac -sourcepath . @sources.txt
+$ javac @sources.txt
 `
 
 ## TO RUN
