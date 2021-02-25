@@ -28,4 +28,6 @@ $ docker pull williamyeh/java7
 $ docker run -it --rm -v ~/Desktop/avaj-launcher:/avaj-launcher williamyeh/java7 bash
 `
 
+## UML Class Diagram
 
+![alt text](https://github.com/ilkou/avaj-launcher/blob/main/avaj_uml.png)
