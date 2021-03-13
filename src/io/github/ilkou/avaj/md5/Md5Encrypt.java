@@ -1,9 +1,7 @@
 package io.github.ilkou.avaj.md5;
 
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Md5Encrypt {
@@ -14,16 +12,18 @@ public class Md5Encrypt {
         types = new HashMap<String, String>();
         try {
             types.put(encryptData(aircraftTypes[0]), aircraftTypes[0]);
-            types.put(encryptData(aircraftTypes[0]), aircraftTypes[0]);
-            types.put(encryptData(aircraftTypes[0]), aircraftTypes[0]);
+            types.put(encryptData(aircraftTypes[1]), aircraftTypes[1]);
+            types.put(encryptData(aircraftTypes[2]), aircraftTypes[2]);
         } catch (NoSuchAlgorithmException e) {
-            System.out.println("Here ");
             e.printStackTrace();
         }
     }
 
     public static String getEncryptedTypes(String type) {
-        return types.get(type);
+        if (types.containsKey(type)) {
+            return types.get(type);
+        }
+        return "";
     }
 
     private static String bytesToHex(byte[] bytes) {
