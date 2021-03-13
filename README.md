@@ -5,17 +5,17 @@ Implementation of a simple Java program according to a given class diagram writt
 ## TO COMPILE
 
 `
-$ find * -name "*.java" > sources.txt
-`
-
-`
-$ javac @sources.txt
+$ make
 `
 
 ## TO RUN
 
 `
-$ java -classpath src io.github.ilkou.avaj.simulator.Simulator scenario.txt
+$ make exeute
+`
+
+`
+$ cat simulation.txt
 `
 
 ## Docker (Java 7)
