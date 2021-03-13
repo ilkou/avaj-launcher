@@ -7,7 +7,6 @@ class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 	private HashMap<String, String> funnyMessages;
 
-
 	Baloon(String name, Coordinates coordinates) {
 		super(name, coordinates);
 		funnyMessages = new HashMap<String, String>();

@@ -10,10 +10,10 @@ class JetPlane extends Aircraft implements Flyable {
 	JetPlane(String name, Coordinates coordinates) {
 		super(name, coordinates);
 		funnyMessages = new HashMap<String, String>();
-		funnyMessages.put("RAIN", "It's raining de-de-de-de");
-		funnyMessages.put("FOG", "I can't see sh*t");
-		funnyMessages.put("SUN", "Nice day for fishing ain't it ~Rowan");
-		funnyMessages.put("SNOW", "Be like snow: beautiful but so f*cking cold");
+		funnyMessages.put("RAIN", "It's RAINING SIDEWAYS ~Ollie");
+		funnyMessages.put("FOG", "There's CLOUDS, down here");
+		funnyMessages.put("SUN", "It's HOT ~Ollie");
+		funnyMessages.put("SNOW", "It's COLD ~Ollie");
 	}
 	public void updateConditions() throws IOException {
 		String weather = weatherTower.getWeather(this.coordinates);

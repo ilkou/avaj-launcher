@@ -10,10 +10,10 @@ class Helicopter extends Aircraft implements Flyable {
 	Helicopter(String name, Coordinates coordinates) {
 		super(name, coordinates);
 		funnyMessages = new HashMap<String, String>();
-		funnyMessages.put("RAIN", "It's raining de-de-de-de");
-		funnyMessages.put("FOG", "I can't see sh*t");
-		funnyMessages.put("SUN", "Nice day for fishing ain't it ~Rowan");
-		funnyMessages.put("SNOW", "Be like snow: beautiful but so f*cking cold");
+		funnyMessages.put("RAIN", "Let's just distribute some water");
+		funnyMessages.put("FOG", "My rotor blades are not only for flying !");
+		funnyMessages.put("SUN", "It's HOTTER than the Screaming Sun Planet");
+		funnyMessages.put("SNOW", "Feels like another christmas far away from home :(");
 	}
 	public void updateConditions() throws IOException {
 		String weather = weatherTower.getWeather(this.coordinates);

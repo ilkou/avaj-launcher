@@ -11,6 +11,7 @@ class WeatherProvider {
 	}
 
 	public String getCurrentWeather(Coordinates coordinates) {
+//		return (weather[((coordinates.getLongitude() + coordinates.getLatitude()) * coordinates.getHeight()) % 4]);
 		return (weather[(coordinates.getLongitude() * coordinates.getLatitude() * coordinates.getHeight()) % 4]);
 	}
 }

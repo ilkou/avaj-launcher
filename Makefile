@@ -12,7 +12,8 @@ $(NAME):
 	javac @$(SOURCES)
 
 $(EXECUTE):
-	java -classpath src io.github.ilkou.avaj.simulator.Simulator scenario.txt
+	@java -classpath src io.github.ilkou.avaj.simulator.Simulator scenario.txt
+	@cat $(SIMULATION)
 
 clean: 
 	find . -type f -path "./src/*/*" -name "*.class" -exec rm -f {} \;
