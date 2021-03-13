@@ -33,12 +33,12 @@ class Helicopter extends Aircraft implements Flyable {
 			this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10,
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 2);
-		else if (weather.equals("SNOW")) //just delete me already
+		else
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 12);
 		Simulator.file.write("Helicopter#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".\n");
-		if (this.coordinates.getHeight() == 0) {
+		if (this.coordinates.getHeight() <= 0) {
 			Simulator.file.write("Helicopter#" + this.name + "(" + this.id + ") landing.\n");
 			this.weatherTower.unregister(this);
 		}

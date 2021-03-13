@@ -33,12 +33,12 @@ class Baloon extends Aircraft implements Flyable {
 			this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2,
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() + 4);
-		else if (weather.equals("SNOW"))
+		else
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 15);
 		Simulator.file.write("Baloon#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".\n");
-		if (this.coordinates.getHeight() == 0) {
+		if (this.coordinates.getHeight() <= 0) {
 			Simulator.file.write("Baloon#" + this.name + "(" + this.id + ") landing.\n");
 			this.weatherTower.unregister(this);
 		}

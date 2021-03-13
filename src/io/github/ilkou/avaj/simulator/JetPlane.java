@@ -33,12 +33,12 @@ class JetPlane extends Aircraft implements Flyable {
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude() + 10,
 					this.coordinates.getHeight() + 2);
-		else if (weather.equals("SNOW")) //just delete me already
+		else
 			this.coordinates = new Coordinates(this.coordinates.getLongitude(),
 					this.coordinates.getLatitude(),
 					this.coordinates.getHeight() - 7);
 		Simulator.file.write("JetPlane#" + this.name + "(" + this.id + "): " + funnyMessages.get(weather) + ".\n");
-		if (this.coordinates.getHeight() == 0) {
+		if (this.coordinates.getHeight() <= 0) {
 			Simulator.file.write("JetPlane#" + this.name + "(" + this.id + ") landing.\n");
 			this.weatherTower.unregister(this);
 		}

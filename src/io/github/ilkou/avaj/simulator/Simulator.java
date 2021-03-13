@@ -36,11 +36,12 @@ public class Simulator {
 		while (line != null) {
 			String []parts = line.split(" ");
 			if (parts.length != 5)
-				throw new ScenarioFileException("Each following ling must contain five parameters");
+				throw new ScenarioFileException("Each following line must contain five parameters separated by one space, with this format:\n"
+						+ "TYPE NAME LONGITUDE LATITUDE HEIGHT.");
 			Integer[] coord = { Integer.parseInt(parts[2]),
 				Integer.parseInt(parts[3]),
 				Integer.parseInt(parts[4]) };
-			if (coord[2] <= 0 || coord[2] > 100) {
+			if (coord[2] < 0 || coord[2] > 100) {
 				throw new AircraftHeightException();
 			}
 			AircraftFactory.newAircraft(parts[0], parts[1], coord[0], coord[1], coord[2])
@@ -68,8 +69,8 @@ public class Simulator {
 			weatherTower = new WeatherTower();
 			parseScenario(args[0]);
 			run();
-		} catch (Exception e) {
-			System.err.println(e);
+		} catch (Exception whateverException) {
+			System.err.println(whateverException);
 		}
 	}
 }

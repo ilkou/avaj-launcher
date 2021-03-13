@@ -3,6 +3,7 @@ NAME = compile
 EXECUTE = execute
 
 SOURCES = sources.txt
+SCENARIO = scenario.txt
 SIMULATION = simulation.txt
 
 all: $(NAME)
@@ -12,7 +13,7 @@ $(NAME):
 	javac @$(SOURCES)
 
 $(EXECUTE):
-	@java -classpath src io.github.ilkou.avaj.simulator.Simulator scenario.txt
+	@java -classpath src io.github.ilkou.avaj.simulator.Simulator $(SCENARIO)
 	@cat $(SIMULATION)
 
 clean: 
