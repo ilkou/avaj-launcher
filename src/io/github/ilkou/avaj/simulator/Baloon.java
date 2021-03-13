@@ -5,16 +5,20 @@ import java.util.HashMap;
 
 class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
-	private HashMap<String, String> funnyMessages;
+	private static final HashMap<String, String> funnyMessages;
 
-	Baloon(String name, Coordinates coordinates) {
-		super(name, coordinates);
+	static {
 		funnyMessages = new HashMap<String, String>();
 		funnyMessages.put("RAIN", "It's raining de-de-de-de");
 		funnyMessages.put("FOG", "I can't see sh*t");
 		funnyMessages.put("SUN", "Nice day for fishing ain't it ~Rowan");
 		funnyMessages.put("SNOW", "Be like snow: beautiful but so f*cking cold");
 	}
+
+	Baloon(String name, Coordinates coordinates) {
+		super(name, coordinates);
+	}
+
 	public void updateConditions() throws IOException {
 		String weather = weatherTower.getWeather(this.coordinates);
 		if (weather.equals("RAIN"))
@@ -39,6 +43,7 @@ class Baloon extends Aircraft implements Flyable {
 			this.weatherTower.unregister(this);
 		}
 	}
+
 	public void registerTower(WeatherTower weatherTower) throws IOException {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);

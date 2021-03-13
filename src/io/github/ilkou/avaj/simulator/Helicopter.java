@@ -5,16 +5,20 @@ import java.util.HashMap;
 
 class Helicopter extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
-	private HashMap<String, String> funnyMessages;
+	private static final HashMap<String, String> funnyMessages;
 
-	Helicopter(String name, Coordinates coordinates) {
-		super(name, coordinates);
+	static {
 		funnyMessages = new HashMap<String, String>();
 		funnyMessages.put("RAIN", "Let's just distribute some water");
 		funnyMessages.put("FOG", "My rotor blades are not only for flying !");
 		funnyMessages.put("SUN", "It's HOTTER than the Screaming Sun Planet");
 		funnyMessages.put("SNOW", "Feels like another christmas far away from home :(");
 	}
+
+	Helicopter(String name, Coordinates coordinates) {
+		super(name, coordinates);
+	}
+
 	public void updateConditions() throws IOException {
 		String weather = weatherTower.getWeather(this.coordinates);
 		if (weather.equals("RAIN"))
@@ -39,6 +43,7 @@ class Helicopter extends Aircraft implements Flyable {
 			this.weatherTower.unregister(this);
 		}
 	}
+
 	public void registerTower(WeatherTower weatherTower) throws IOException {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
